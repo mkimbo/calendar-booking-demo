@@ -52,9 +52,11 @@ export default async ({
           description: description,
           start: {
             dateTime: startTime,
+            timeZone: "Africa/Nairobi",
           },
           end: {
             dateTime: endTime,
+            timeZone: "Africa/Nairobi",
           },
         },
       },
@@ -98,8 +100,8 @@ export default async ({
 
   if (remainingOccupants > 0) {
     console.error("Error: Not all occupants have been accommodated.");
-    return false;
+    return { success: false };
   }
 
-  return true; // success
+  return { success: true }; // success
 };
