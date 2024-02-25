@@ -34,7 +34,7 @@ export default async ({
 }: Booking) => {
   const maxOccupantsPerVilla = 4;
   let remainingOccupants = totalOccupants;
-
+  console.log(totalOccupants, "occs1");
   // Function to create an event in Google Calendar
   async function createCalendarEvent({
     calendarId,
@@ -81,7 +81,7 @@ export default async ({
       maxOccupantsPerVilla
     );
     remainingOccupants -= occupantsThisVilla;
-
+    console.log(remainingOccupants, "occs2");
     // Prepare event details
     const summary = `Villa Booking for ${customerEmail}`;
     const description = `Booking for ${occupantsThisVilla} occupant(s) from ${customerEmail}.`;
@@ -97,7 +97,7 @@ export default async ({
 
     await createCalendarEvent(eventToAdd);
   }
-
+  console.log(remainingOccupants, "occs3");
   if (remainingOccupants > 0) {
     console.error("Error: Not all occupants have been accommodated.");
     return { success: false };
