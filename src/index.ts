@@ -19,7 +19,6 @@ app.post("/book-reservation", (req: Request, res: Response) => {
   const customerEmail = req.body?.customerEmail;
   const startTime = req.body?.startTime;
   const endTime = req.body?.endTime;
-  console.error("availableCalendarIds", availableCalendarIds);
   let availableCalendarIdsArray: string[] = [];
 
   if (Array.isArray(availableCalendarIds)) {
