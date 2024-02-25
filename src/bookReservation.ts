@@ -81,14 +81,14 @@ export default async ({
       maxOccupantsPerVilla
     );
     remainingOccupants -= occupantsThisVilla;
-    console.log(remainingOccupants, "occs2");
+    console.log(calendarId, "occs2");
     // Prepare event details
     const summary = `Villa Booking for ${customerEmail}`;
     const description = `Booking for ${occupantsThisVilla} occupant(s) from ${customerEmail}.`;
 
     // Create a calendar event for the current villa
     const eventToAdd: CalendarEvent = {
-      calendarId: calendarId as string,
+      calendarId: `${calendarId}`,
       summary,
       description,
       startTime,
@@ -97,7 +97,7 @@ export default async ({
 
     await createCalendarEvent(eventToAdd);
   }
-  console.log(remainingOccupants, "occs3");
+
   if (remainingOccupants > 0) {
     console.error("Error: Not all occupants have been accommodated.");
     return { success: false };
