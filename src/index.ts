@@ -20,10 +20,22 @@ app.post("/book-reservation", (req: Request, res: Response) => {
   const startTime = req.body?.startTime;
   const endTime = req.body?.endTime;
   console.error("availableCalendarIds", availableCalendarIds);
+  let availableCalendarIdsArray: string[] = [];
+
+  if (Array.isArray(availableCalendarIds)) {
+    availableCalendarIdsArray = availableCalendarIds;
+  }
+  if (
+    typeof availableCalendarIds === "string" &&
+    availableCalendarIds.includes(",")
+  ) {
+    availableCalendarIdsArray = availableCalendarIds.split(",");
+  }
+
   if (availableCalendarIds) {
     bookReservation({
       totalOccupants: parseInt(totalOccupants as string),
-      availableCalendarIds: availableCalendarIds,
+      availableCalendarIds: availableCalendarIdsArray,
       customerEmail,
       startTime,
       endTime,

@@ -34,6 +34,7 @@ export default async ({
 }: Booking) => {
   const maxOccupantsPerVilla = 4;
   let remainingOccupants = totalOccupants;
+
   console.log(totalOccupants, "occs1");
   // Function to create an event in Google Calendar
   async function createCalendarEvent({
@@ -71,6 +72,8 @@ export default async ({
       }
     );
   }
+
+  // create array from apple,mango
 
   for (const calendarId of availableCalendarIds) {
     if (remainingOccupants <= 0) {
