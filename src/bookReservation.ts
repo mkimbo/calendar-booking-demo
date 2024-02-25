@@ -88,7 +88,7 @@ export default async ({
 
     // Create a calendar event for the current villa
     const eventToAdd: CalendarEvent = {
-      calendarId,
+      calendarId: calendarId as string,
       summary,
       description,
       startTime,
